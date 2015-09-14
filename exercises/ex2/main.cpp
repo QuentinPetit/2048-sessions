@@ -59,16 +59,20 @@ private:
 };
 
 // sort integers
-bool Delete(A a) { return !a.isValid(); }
+bool Delete(A& a) { return !a.isValid(); }
 void removeInvalid(
 	std::vector<A> & array){
+	/*
 	std::vector<A>::iterator endRemove;
 
 	endRemove = std::remove_if(array.begin(), array.end(), Delete);
 
 	int d = std::distance(array.begin(), endRemove);
 	array.resize(d);
-	
+	*/
+	std::vector<A>::iterator it = array.begin();
+	while (it != array.end())
+		it = it->isValid() ? it + 1 : array.erase(it);
 }
 
 
